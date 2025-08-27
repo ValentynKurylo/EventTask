@@ -8,6 +8,7 @@ import {
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { EventCategoryEnum } from '../../../common/enums';
+import {Type} from "class-transformer";
 
 export class CreateEventDto {
   @ApiProperty({ example: 'Test Event' })
@@ -38,11 +39,13 @@ export class CreateEventDto {
   description: string;
 
   @ApiProperty({ required: false, example: 44.8973 })
+  @Type(()=> Number)
   @IsOptional()
   @IsNumber()
   latitude?: number;
 
   @ApiProperty({ required: false, example: 34.7748 })
+  @Type(()=> Number)
   @IsOptional()
   @IsNumber()
   longitude?: number;
